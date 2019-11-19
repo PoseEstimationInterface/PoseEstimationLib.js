@@ -1,6 +1,6 @@
 {
   "name": "pose-estimation-lib.js",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "repository": "https://github.com/PoseEstimationInterface/PoseEstimationLib.js",
   "author": "Jongbok Park <okps123@naver.com>",
   "license": "MIT",
@@ -10,7 +10,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@tensorflow-models/posenet": "^2.2.0"
+    "@tensorflow-models/posenet": "^2.2.0",
+    "@tensorflow/tfjs": "^1.3.2"
   },
   "devDependencies": {
     "typescript": "^3.7.2"
