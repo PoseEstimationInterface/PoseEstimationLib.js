@@ -6,3 +6,8 @@
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@tensorflow-models/posenet/-/posenet-2.2.0.tgz#af2237b018a8bb46c8e53e7e1817277fa368d134"
   integrity sha512-z5KCVHWtVV4f+q0kby6DrDyKxZKgl882Yr4JoT4g0x9l3osJ7NrKb0OJFcZj3lB0rSvjdH4uZ9mdC0h/7ovWLA==
+
+typescript@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.2.tgz#27e489b95fa5909445e9fef5ee48d81697ad18fb"
+  integrity sha512-ml7V7JfiN2Xwvcer+XAf2csGO1bPBdRbFCkYBczNZggrBZ9c7G3riSUeJmqEU5uOtXNPMhE3n+R4FA/3YOAWOQ==
