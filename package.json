@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/PoseEstimationInterface/PoseEstimationLib.js",
   "author": "Jongbok Park <okps123@naver.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.0"
+  }
 }
