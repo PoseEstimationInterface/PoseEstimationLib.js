@@ -69,6 +69,11 @@ export function isSitDown(pose: any): boolean {
   return false;
 }
 
+/**
+ * 점프중인지 확인하는 함수입니다
+ * @param pose 포즈 데이터 배열
+ * @param groundY 바닥의 높이
+ */
 export function isJumping(pose: any, groundY: number): boolean {
   if (pose["keypoints"][15]["score"] > 0.5) {
     const leftAnkle = pose["keypoints"][15]["position"];
@@ -83,6 +88,35 @@ export function isJumping(pose: any, groundY: number): boolean {
     if (rightJumpLen > jumpDefault && leftJumpLen > jumpDefault) {
       return true;
     }
+  }
+
+  return false;
+}
+
+/**
+ * 상상도 못한 정체 포즈인지 확인하는 함수
+ * @param pose 포즈 데이터 배열
+ */
+export function isSangSang(pose: any): boolean {
+  const rightShoulder = pose["keypoints"][6]["position"];
+  const rightElbow = pose["keypoints"][8]["position"];
+  const rightWrist = pose["keypoints"][10]["position"];
+
+  const angle1 = getAngle(rightWrist, rightElbow, rightShoulder);
+
+  const leftShoulder = pose["keypoints"][5]["position"];
+  const leftElbow = pose["keypoints"][7]["position"];
+  const leftWrist = pose["keypoints"][9]["position"];
+
+  const angle2 = getAngle(leftWrist, leftElbow, leftShoulder);
+
+  if (
+    angle1 > 80 &&
+    angle2 > 80 &&
+    leftElbow["y"] - leftWrist["y"] < 0 &&
+    rightElbow["y"] - rightWrist["y"] > 0
+  ) {
+    return true;
   }
 
   return false;
