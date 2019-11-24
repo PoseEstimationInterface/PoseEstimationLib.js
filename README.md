@@ -24,7 +24,7 @@ yarn add pose-estimation-lib.js
 ## :memo: Getting Started
 
 ```javascript
-import { estimation } from "pose-estimation-lib.js/dist";
+import { estimation, pose } from "pose-estimation-lib.js/dist";
 
 async function main() {
   const imgElement = ...
@@ -32,8 +32,11 @@ async function main() {
   await estimation.initialize();
   console.log("Model Loaded");
 
-  const pose = await estimation.estimatePose(imgElement, false);
-  console.log(pose);
+  const data = await estimation.estimatePose(imgElement, false);
+  console.log(data);
+
+  const isLeftUp = pose.isLeftHandUp(data);
+  console.log("isLeftUp");
 }
 
 main();
