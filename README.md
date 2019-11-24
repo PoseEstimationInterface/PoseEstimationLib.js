@@ -30,13 +30,12 @@ async function main() {
   const imgElement = ...
 
   await estimation.initialize();
-  console.log("Model Loaded");
 
   const data = await estimation.estimatePose(imgElement, false);
   console.log(data);
 
   const isLeftUp = pose.isLeftHandUp(data);
-  console.log("isLeftUp");
+  console.log(isLeftUp);
 }
 
 main();
