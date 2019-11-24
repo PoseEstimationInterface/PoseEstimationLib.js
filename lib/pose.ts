@@ -68,3 +68,22 @@ export function isSitDown(pose: any): boolean {
 
   return false;
 }
+
+export function isJumping(pose: any, groundY: number): boolean {
+  if (pose["keypoints"][15]["score"] > 0.5) {
+    const leftAnkle = pose["keypoints"][15]["position"];
+
+    const rightHip = pose["keypoints"][12]["position"];
+    const rightAnkle = pose["keypoints"][16]["position"];
+
+    const jumpDefault = (rightAnkle["y"] - rightHip["y"]) / 4;
+    const rightJumpLen = groundY - rightAnkle["y"];
+    const leftJumpLen = groundY - leftAnkle["y"];
+
+    if (rightJumpLen > jumpDefault && leftJumpLen > jumpDefault) {
+      return true;
+    }
+  }
+
+  return false;
+}
