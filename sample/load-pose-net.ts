@@ -1,7 +1,7 @@
-import * as pose from "../lib/pose";
+import * as estimation from "../lib/estimation";
 
 async function main() {
-  await pose.initialize();
+  await estimation.initialize();
   console.log("Model Loaded");
 }
 
