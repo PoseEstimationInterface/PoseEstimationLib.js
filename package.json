@@ -1,13 +1,14 @@
 {
   "name": "pose-estimation-lib.js",
-  "version": "0.0.24",
+  "version": "0.0.242",
   "repository": "https://github.com/PoseEstimationInterface/PoseEstimationLib.js",
   "author": "Jongbok Park <okps123@naver.com>",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "deploy": "yarn build && yarn publish"
   },
   "keywords": [
     "posenet",
