@@ -1,6 +1,6 @@
 {
   "name": "pose-estimation-lib.js",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "repository": "https://github.com/PoseEstimationInterface/PoseEstimationLib.js",
   "author": "Jongbok Park <okps123@naver.com>",
   "license": "MIT",
