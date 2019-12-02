@@ -43,6 +43,51 @@ main();
 
 ## 📃 Document
 
+### 1. Left Hand Up
+
+![LeftHandUp](https://media.giphy.com/media/U3tBTrTBhov5NLiCcG/giphy.gif)
+
+#### Example Code
+
+```js
+```
+
+### 2. Left Hand Up (Big)
+
+![LeftHandUpBig](https://media.giphy.com/media/YRPvRRumiEzZrNqvno/giphy.gif)
+
+#### Example Code
+
+```js
+```
+
+### 3. Right Hand Up
+
+![RightHandUp](https://media.giphy.com/media/JqDYckncoHFsOvO3Dy/giphy.gif)
+
+#### Example Code
+
+```js
+```
+
+### 4. Right Hand Up (Big)
+
+![RightHandUpBig](https://media.giphy.com/media/hXIwheimqo9nyOzU02/giphy.gif)
+
+#### Example Code
+
+```js
+```
+
+### 5. Jumping
+
+![Jumping](https://media.giphy.com/media/LmYoTNpbBJeCfnkOwH/giphy.gif)
+
+#### Example Code
+
+```js
+```
+
 ## :pray: ​Contributing
 
 프로젝트 참여는 누구나 환영합니다. Github 저장소를 통해 PR을 요청해주시면 감사하겠습니다.
