@@ -15,7 +15,7 @@ export function isLeftHandUp(pose: any, minAngle: number = 0): boolean {
   const isHandUp = leftWrist["y"] - leftElbow["y"] < 0;
   const angle = getAngle(leftElbow, leftShoulder, leftHip);
 
-  if (isHandUp && minAngle >= angle) {
+  if (isHandUp && angle >= minAngle) {
     return true;
   }
 
