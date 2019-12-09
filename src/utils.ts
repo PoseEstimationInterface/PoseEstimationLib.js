@@ -5,10 +5,27 @@ function arraySum(array: Array<number>) {
 let ground = [0, 0];
 let groundY = 0;
 
+let noseVal = 0;
+const noses = [0, 0];
+
+const prePose: any[] = [];
+
+/**
+ * 이전 포즈를 업데이트하는 함수입니다.
+ * 최근 30프레임을 저장하는 배열에 새 포즈를 추가합니다.
+ * @param pose 포즈
+ */
+export function updatePose(pose: any) {
+  prePose.unshift(pose);
+  if (prePose.length > 4) {
+    prePose.pop();
+  }
+}
+
 /**
  * 바닥의 높이를 구하는 함수입니다.
  * 최근 30프레임의 평균 발 높이를 반환합니다.
- * @param pose 포즈 데이터 배열
+ * @param pose 포즈
  */
 export function getGroundY(pose: any) {
   let rightFootY = pose["keypoints"][16]["position"]["y"];
@@ -23,6 +40,26 @@ export function getGroundY(pose: any) {
 
   groundY = arraySum(ground) / ground.length;
   return groundY;
+}
+
+/**
+ * 코의 Y를 구하는 함수입니다.
+ * @param pose 포즈
+ */
+export function getNoseY(pose: any) {
+  let nowNose = pose["keypoints"][0]["position"]["y"];
+  nowNose = nowNose - (nowNose - noseVal) * 0.3;
+
+  if (noses.length > 30) {
+    noses.pop();
+  }
+
+  if (pose["keypoints"][0]["score"] > 0.5) {
+    noses.unshift(nowNose);
+  }
+
+  noseVal = arraySum(noses) / noses.length;
+  return noseVal;
 }
 
 /**
@@ -55,8 +92,6 @@ export function getAngle(p1: any, p2: any, p3: any) {
   const dp = dx1 * dx2 + dy1 * dy2;
   return Math.acos(dp / (abs1 * abs2)) * (180 / Math.PI);
 }
-
-const prePose: any = [];
 
 /**
  * 관절 정점의 벡터를 계산합니다.
