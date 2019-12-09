@@ -24,18 +24,31 @@ yarn add pose-estimation-lib.js
 ## :memo: Getting Started
 
 ```javascript
-import { estimation, pose } from "pose-estimation-lib.js/dist";
+import * as posenet from "@tensorflow-models/posenet";
+import * as pelib from "pose-estimation-lib.js/dist/src/pose";
+import * as peutils from "pose-estimation-lib.js/dist/src/uitls";
 
 async function main() {
   const imgElement = ...
+  const flipHorizontal = true;
 
-  await estimation.initialize();
+  // initialize posenet
+  const net = await posenet.load({
+    architecture: "ResNet50",
+    outputStride: 16,
+    inputResolution: 200,
+    multiplier: 1,
+    quantBytes: 1
+  });
 
-  const data = await estimation.estimatePose(imgElement, false);
-  console.log(data);
+  // estimation pose from imgElement
+  const pose = await net.estimatePoses(imgElement, {
+    decodingMethod: "single-person",
+    flipHorizontal
+  });
 
-  const isLeftUp = pose.isLeftHandUp(data);
-  console.log(isLeftUp);
+  const isLeftUp = pelib.isLeftHandUp(pose);
+  console.log("isLeftHandUp", isLeftUp);
 }
 
 main();
@@ -50,6 +63,8 @@ main();
 #### Example Code
 
 ```js
+const isLeftUp = pelib.isLeftHandUp(pose);
+console.log("isLeftHandUp", isLeftUp);
 ```
 
 ### 2. Left Hand Up (Big)
@@ -59,6 +74,8 @@ main();
 #### Example Code
 
 ```js
+const isLeftUpBig = pelib.isLeftHandUp(pose, 90);
+console.log("isLeftUpBig", isLeftUpBig);
 ```
 
 ### 3. Right Hand Up
@@ -68,6 +85,8 @@ main();
 #### Example Code
 
 ```js
+const isRightUp = pelib.isRightHandUp(pose);
+console.log("isRightHandUp", isRightUp);
 ```
 
 ### 4. Right Hand Up (Big)
@@ -77,6 +96,8 @@ main();
 #### Example Code
 
 ```js
+const isRightUp = pelib.isRightHandUp(pose, 90);
+console.log("isRightHandUpBig", isRightUp);
 ```
 
 ### 5. Jumping
@@ -86,6 +107,20 @@ main();
 #### Example Code
 
 ```js
+let groundY = 0;
+
+// in update loop
+groundY = peutils.getGround(pose);
+
+const isJumping = pelib.isJumping(pose, groundY);
+console.log("isJumping", isJumping);
+```
+
+### 6. Sitting
+
+```js
+const isSitting = pelib.isSitDown(pose);
+console.log("isSitting", isSitting);
 ```
 
 ## :pray: ​Contributing
